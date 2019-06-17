@@ -7,16 +7,17 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -ex && \
     apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y curl wget socat git python && \
-    apt-get install -y ffmpeg sqlite3 zlib1g-dev libmemcached-dev libjpeg-dev && \
+    apt-get install -y curl wget socat git python --no-install-recommends && \
+    apt-get install -y ffmpeg sqlite3 zlib1g-dev libmemcached-dev libjpeg-dev --no-install-recommends && \
     apt-get install -y python2.7 libpython2.7 python-setuptools python-pip \
             python-imaging python-ldap python-urllib3 python-simplejson \
-            python-mysqldb python-memcache && \
+            python-mysqldb python-memcache --no-install-recommends && \
     pip install --upgrade pip setuptools && \
     rm -f /usr/bin/pip && \
     ln -s /usr/local/bin/pip /usr/bin/pip && \
-    pip install pillow moviepy && \
     pip install --upgrade cryptography pyopenssl && \
+    pip install pillow && \
+    pip install moviepy==0.2.3.2 && \
     apt-get clean && apt-get autoclean && apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     rm -rf /root/.cache/pip
