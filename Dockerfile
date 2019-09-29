@@ -1,16 +1,17 @@
-FROM		phusion/baseimage
-MAINTAINER	Jens Erat <email@jenserat.de>
+FROM phusion/baseimage:master
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # Seafile dependencies and system configuration
+# Ubuntu 16: python-imaging
+# Ubuntu 18: python-pil
 RUN set -ex && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y curl wget socat git python --no-install-recommends && \
     apt-get install -y ffmpeg sqlite3 zlib1g-dev libmemcached-dev libjpeg-dev --no-install-recommends && \
     apt-get install -y python2.7 libpython2.7 python-setuptools python-pip \
-            python-imaging python-ldap python-urllib3 python-simplejson \
+            python-pil python-ldap python-urllib3 python-simplejson \
             python-mysqldb python-memcache --no-install-recommends && \
     pip install --upgrade pip setuptools && \
     rm -f /usr/bin/pip && \
