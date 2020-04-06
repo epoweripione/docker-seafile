@@ -11,10 +11,6 @@ RUN set -ex && \
     apt-get install -y python3 python3-setuptools python3-pip --no-install-recommends && \
     pip3 install --timeout=3600 Pillow pylibmc captcha jinja2 sqlalchemy psd-tools \
         django-pylibmc django-simple-captcha python3-ldap && \
-    # Office Documents Preview with LibreOffice
-    # https://download.seafile.com/published/seafile-manual/deploy_pro/office_documents_preview.md#user-content-Version%207.1+
-    apt-get install -y libreoffice libreoffice-script-provider-python --no-install-recommends && \
-    apt-get install -y ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy --no-install-recommends && \
     apt-get clean && apt-get autoclean && apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     rm -rf /root/.cache/pip
