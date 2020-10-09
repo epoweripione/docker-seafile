@@ -7,6 +7,7 @@ RUN set -ex && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y curl wget socat git python --no-install-recommends && \
+    apt-get install -y build-essential libssl-dev libffi-dev python3-dev --no-install-recommends && \
     apt-get install -y ffmpeg sqlite3 zlib1g-dev libmemcached-dev libjpeg-dev --no-install-recommends && \
     apt-get install -y python3 python3-setuptools python3-pip --no-install-recommends && \
     pip3 install --timeout=3600 Pillow pylibmc captcha jinja2 sqlalchemy psd-tools \
